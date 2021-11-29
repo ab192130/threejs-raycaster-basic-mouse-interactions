@@ -50,7 +50,7 @@ function init() {
         let cubeGeo = new THREE.BoxGeometry(2, 2, 2);
         let cubeMaterial = new THREE.MeshPhongMaterial({color: "#ffffff"});
         let cubeMesh = new THREE.Mesh(cubeGeo, cubeMaterial);
-        cubeMesh.position.x = -2
+        cubeMesh.position.x = 0
         cubeMesh.position.y = 0.5
         cubeMesh.castShadow = true;
         cubeMesh.receiveShadow = true;
@@ -65,7 +65,7 @@ function init() {
         let sphereGeo = new THREE.SphereGeometry(1, 32, 16);
         let sphereMaterial = new THREE.MeshPhongMaterial({color: "#ffffff"});
         let sphereMesh = new THREE.Mesh(sphereGeo, sphereMaterial);
-        sphereMesh.position.x = 2
+        sphereMesh.position.x = 3
         sphereMesh.position.y = 0.5
         sphereMesh.castShadow = true;
         sphereMesh.receiveShadow = true;
@@ -73,6 +73,21 @@ function init() {
 
         sphereMesh.userData.draggable = true;
         sphereMesh.userData.name = "SPHERE";
+    }
+
+    // Cone
+    function createCone() {
+        let coneGeo = new THREE.ConeGeometry(1, 2, 32);
+        let coneMaterial = new THREE.MeshPhongMaterial({color: "#ffffff"});
+        let coneMesh = new THREE.Mesh(coneGeo, coneMaterial);
+        coneMesh.position.x = -3
+        coneMesh.position.y = 0.5
+        coneMesh.castShadow = true;
+        coneMesh.receiveShadow = true;
+        scene.add(coneMesh);
+
+        coneMesh.userData.draggable = true;
+        coneMesh.userData.name = "CONE";
     }
 
     window.addEventListener('resize', onResize, false)
@@ -161,6 +176,7 @@ function init() {
 
     createCube();
     createSphere();
+    createCone();
     createFloor();
 
     function animate() {

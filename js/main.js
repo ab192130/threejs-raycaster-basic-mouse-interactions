@@ -15,17 +15,17 @@ function init() {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 10;
     camera.position.y = 3;
-    camera.lookAt(scene.position)
+    //camera.lookAt(scene.position)
 
     // Render
-    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
 
     // Orbit Control
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.update();
+    //controls.update();
     controls.enableDamping = true;
     controls.minDistance = 10;
 
@@ -38,12 +38,12 @@ function init() {
     dirLight.position.set(-30, 50, 30);
     scene.add(dirLight);
     dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 2048;
-    dirLight.shadow.mapSize.height = 2048;
-    // dirLight.shadow.camera.left = -70;
-    // dirLight.shadow.camera.right = 70;
-    // dirLight.shadow.camera.top = 70;
-    // dirLight.shadow.camera.bottom = -70;
+    dirLight.shadow.mapSize.width = 7000;
+    dirLight.shadow.mapSize.height = 7000;
+    dirLight.shadow.camera.left = -5; // shadow viewing frustum
+    dirLight.shadow.camera.right = 5; // shadow viewing frustum
+    dirLight.shadow.camera.top = 5; // shadow viewing frustum
+    dirLight.shadow.camera.bottom = -5; // shadow viewing frustum
 
     // Cube
     function createCube() {
@@ -180,6 +180,7 @@ function init() {
     createFloor();
 
     function animate() {
+        controls.update();
         dragObject();
         requestAnimationFrame(animate);
         renderer.render(scene, camera);

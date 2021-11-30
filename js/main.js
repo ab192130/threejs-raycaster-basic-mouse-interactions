@@ -40,10 +40,10 @@ function init() {
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 7000;
     dirLight.shadow.mapSize.height = 7000;
-    dirLight.shadow.camera.left = -5; // shadow viewing frustum
-    dirLight.shadow.camera.right = 5; // shadow viewing frustum
-    dirLight.shadow.camera.top = 5; // shadow viewing frustum
-    dirLight.shadow.camera.bottom = -5; // shadow viewing frustum
+    dirLight.shadow.camera.left = -70; // shadow viewing frustum
+    dirLight.shadow.camera.right = 70; // shadow viewing frustum
+    dirLight.shadow.camera.top = 70; // shadow viewing frustum
+    dirLight.shadow.camera.bottom = -70; // shadow viewing frustum
 
     // Cube
     function createCube() {
